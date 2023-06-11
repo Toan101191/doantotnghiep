@@ -1,0 +1,23 @@
+
+<div class="container">
+<table class="table">
+    <thead>
+        <th>stt</th>
+        <th>tên truyện</th>
+        <th>hình ảnh </th>
+        <th>Tên Khách hàng </th>
+        <th>số lượng</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of Cthd;let i = index">
+            <td>{{i+1}}</td>
+            <td>{{c.tentruyen}}</td>
+            <td><img style="width: 44px; height: 44px;" src="assets/img/{{c.hinhanh}}" alt=""></td>
+            <td>{{c.tenkh}}</td>
+            <td>{{c.soluong}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+</div>

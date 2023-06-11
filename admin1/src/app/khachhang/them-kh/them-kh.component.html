@@ -1,0 +1,49 @@
+<button routerLink="/khachhang" style="width: 40px; height: 40px; border-radius: 50%; 
+              margin-right: 20px; background-color: white;" >
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+              </button>
+<h2>Thêm Khách hàng</h2>
+
+<form action="" method="POST" [formGroup]="themkh" (submit)="onsubmit()">
+
+    <div class="form-group">
+        <label for="">Tên Khách hàng</label>
+        <input type="text" class="form-control" formControlName="tenkh" placeholder="Tên khách hàng">
+        <div *ngIf="submited && f.tenkh.errors">
+             <small *ngIf="f.tenkh.errors?.['required']">Tên khách hàng không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">só diện thoại</label>
+        <input type="text" class="form-control" formControlName="sdt" placeholder="số diện thoại">
+        <div *ngIf="submited && f.sdt.errors">
+             <small *ngIf="f.sdt.errors?.['required']">Số điện thoại không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Địa chỉ</label>
+        <input type="text" class="form-control" formControlName="diachi" placeholder="Địa chỉ">
+        <div *ngIf="submited && f.diachi.errors">
+             <small *ngIf="f.diachi.errors?.['required']">Địa chỉ không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Tàỉ khoản</label>
+        <input type="text" class="form-control" formControlName="tk" placeholder="Tàỉ khoản">
+        <div *ngIf="submited && f.tk.errors">
+             <small *ngIf="f.tk.errors?.['required']">Tàỉ khoản không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Mật khẩu</label>
+        <input type="text" class="form-control" formControlName="mk" placeholder="Mật khẩu">
+        <div *ngIf="submited && f.mk.errors">
+             <small *ngIf="f.mk.errors?.['required']">Mật khẩu không được để trống</small> 
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">đăng</button>
+</form>

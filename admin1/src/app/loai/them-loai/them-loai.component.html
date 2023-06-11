@@ -1,0 +1,26 @@
+<button routerLink="/loai" style="width: 40px; height: 40px; border-radius: 50%; 
+              margin-right: 20px; background-color: white;" >
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+              </button>
+<h2>Thêm  Loại</h2>
+<form action="" method="POST" [formGroup]="themloai" (submit)="onsubmit()">
+
+    <div class="form-group">
+        <label for="">Tên Thể Loại</label>
+        <input type="text" class="form-control" formControlName="tentl" placeholder="Tên Thể Loại">
+        <div *ngIf="submited && f.tentl.errors">
+             <small *ngIf="f.tentl.errors?.['required']">Tên thể loại không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Mô tả</label>
+        <input type="text" class="form-control" formControlName="mota" placeholder="Mô tả">
+        <div *ngIf="submited && f.mota.errors">
+            <small *ngIf="f.mota.errors?.['required']">Mô tả không được để trống</small> 
+
+       </div>
+    </div>
+    <button type="submit" class="btn btn-primary">đăng</button>
+</form>
+

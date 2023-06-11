@@ -1,0 +1,176 @@
+<section id="center" class="center_h pt-3 pb-3">
+    <div class="row center_h2 mt-3" > 
+        <div style="margin: 4%;" class="col-md-11 " >
+            <div class="center_h2l" >
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" >
+
+                    <div class="carousel-inner" >
+                        <div class="carousel-item active">
+                            <img src="assets/img/banner3.jpg" class="d-block w-100" height="518" alt="abc">
+                        </div>
+                        <div class="carousel-item " *ngFor="let sl of Sl">
+                            <img src="assets/img/{{sl.hinhanh}}" class="d-block w-100" height="518" alt="abc">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden" style="color:black;">Previous</span>
+                    </button>
+                    <button class="carousel-control-next"  type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden" >Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+   <hr>
+<section id="prod_h" class="pt-3 pb-3">
+    <div class="container-xl">
+        <div class="row prod_h1">
+            <div class="col-md-3">
+                <div class="prod_h1l">
+                    <h5 class="mb-0">TRUYỆN MỚI</h5>
+                </div>
+            </div>
+        </div>
+        <div class="row prod_h2">
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    <div class="prod_h2m row">
+                        <div class="col-md-3" *ngFor="let t of New|filter:term">
+                            <div class="prod_h2i1 clearfix position-relative">
+                                <div class="prod_h2i1i text-center clearfix">
+                                    <div class="grid clearfix">
+                                        <figure class="effect-jazz mb-0">
+                                            <a routerLink="/chitiet/{{t.matruyen}}"><img style="height: 350px;" src="assets/img/{{t.hinhanh}}" class="w-100" alt="abc"></a>
+                                        </figure>
+                                    </div>
+                                    <h6 class="text-capitalize mt-3"><a href="detail.html" routerLink="/chitiet/{{t.matruyen}}"><b>{{t.tentruyen}}</b></a></h6>
+                                    <span class="col_yell">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </span>
+                                    <h5 class="mt-2 col_oran">{{t.gia|number:''}}đ</h5>
+                                    <div *ngIf="!user.tenkh">
+                                        <h6 class="mb-0 mt-3 pb-3" *ngIf="t.soluong >= 1" ><button  (click)="login1()" class="button_1 p-3 pt-2 pb-2"><i
+                                            class="fa fa-shopping-basket"></i> Thêm vào giỏ hàng</button></h6>
+                                            <h6 class="mb-0 mt-3 pb-3" *ngIf="t.soluong == 0 "><button [disabled]="true" class="button_1 p-3 pt-2 pb-2"><i
+                                                class="fa fa-shopping-basket"></i> Hết hàng</button></h6>
+                                    </div>
+                                   <div *ngIf="user.tenkh">
+                                        <h6 class="mb-0 mt-3 pb-3" *ngIf="t.soluong >= 1"><button  (click)="onAddTocard(t)" class="button_1 p-3 pt-2 pb-2"><i
+                                                class="fa fa-shopping-basket"></i> Thêm vào giỏ hàng</button></h6>
+                                        <h6 class="mb-0 mt-3 pb-3" *ngIf="t.soluong == 0 "><button [disabled]="true" class="button_1 p-3 pt-2 pb-2"><i
+                                                class="fa fa-shopping-basket"></i> Hết hàng</button></h6>
+                                   </div>
+                                </div>
+                                <div class="prod_h2i1i1 pt-2 clearfix position-absolute">
+                                    <h6 class="mb-0 bg_green d-inline-block p-3 pt-2 pb-2 text-white">truyện mới</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="prod_h" class="pt-3 pb-3">
+    <div class="container-xl">
+        <div class="row prod_h1">
+            <div class="col-md-3">
+                <div class="prod_h1l">
+                    <h5 class="mb-0">TRUYỆN HAY </h5>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="prod_h1m pull-right">
+                    <ul class="nav nav-tabs mb-0">
+                        <li class="nav-item">
+                            <input style="height: 40px;" type="text" [(ngModel)]="term" placeholder="Tìm kiếm đơn giản">
+                        </li>
+                        <li class="nav-item">
+                            <a href="#settings" data-bs-toggle="tab" aria-expanded="false" class="nav-link">
+                                <button class="btn btn-primary" routerLink="sp">Xem tất cả</button>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="row prod_h2">
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    <div class="prod_h2m row">
+                        <div style="margin-bottom: 20px;" class="col-md-3" *ngFor="let t of newhome|filter:term">
+                            <div class="prod_h2i1 clearfix position-relative">
+                                <div class="prod_h2i1i text-center clearfix">
+                                    <div class="grid clearfix">
+                                        <figure class="effect-jazz mb-0">
+                                            <a href="detail.html" routerLink="/chitiet/{{t.matruyen}}"><img style="height: 350px;" src="assets/img/{{t.hinhanh}}" class="w-100" alt="abc"></a>
+                                        </figure>
+                                    </div>
+                                    <h6 class="text-capitalize mt-3"><a href="detail.html" routerLink="/chitiet/{{t.matruyen}}">{{t.tentruyen}}</a></h6>
+                                    <span class="col_yell">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </span>
+                                    <h5 class="mt-2 col_oran">{{t.gia| number:''}}đ</h5>
+                                    <div *ngIf="!user.tenkh">
+                                        <h6 class="mb-0 mt-3 pb-3" *ngIf="t.soluong >= 1" ><button  (click)="login1()" class="button_1 p-3 pt-2 pb-2"><i
+                                            class="fa fa-shopping-basket"></i> Thêm vào giỏ hàng</button></h6>
+                                            <h6 class="mb-0 mt-3 pb-3" *ngIf="t.soluong == 0 "><button [disabled]="true" class="button_1 p-3 pt-2 pb-2"><i
+                                                class="fa fa-shopping-basket"></i> Hết hàng</button></h6>
+                                    </div>
+                                   <div *ngIf="user.tenkh">
+                                    <h6 class="mb-0 mt-3 pb-3" *ngIf="t.soluong>=1"><button  (click)="onAddTocard(t)" class="button_1 p-3 pt-2 pb-2"><i
+                                        class="fa fa-shopping-basket"></i> Thêm vào giỏ hàng</button></h6>
+                                    <h6 class="mb-0 mt-3 pb-3" *ngIf="t.soluong==0 "><button [disabled]="true"  (click)="onAddTocard(t)" class="button_1 p-3 pt-2 pb-2"><i
+                                        class="fa fa-shopping-basket"></i> Hết hàng</button></h6>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="categ" class="pt-2 pb-4">
+    <div class="container-xl">
+        <div class="categ_1 text-center row">
+            <div class="col-md-12">
+                <h5>Tin tức mới của cửa hàng</h5>
+                <hr class="line me-auto ms-auto">
+            </div>
+        </div>
+        <div class="categ_2 row mt-2">
+            <div class="col-md-3" *ngFor="let t of Tt">
+                <div class="categ_2i">
+                    <div class="grid clearfix">
+                        <figure class="effect-jazz mb-0">
+                            <a  routerLink="/tt/tt/{{t.matin}}"><img  style="height: 200px;" src="assets/img/{{t.hinhanh}}" class="w-100" alt="abc"></a>
+                        </figure>
+                    </div>
+                    <h5 class="mt-2" style="text-align: center;"><a routerLink="/tt/tt/{{t.matin}}">{{t.tieude}}</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

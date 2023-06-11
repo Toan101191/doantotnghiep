@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chi tiết hoá đơn và khách hàng</title>
+    <style>
+        /* CSS cho khung chi tiết hoá đơn */
+        .invoice {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 500px;
+            margin: 0 auto;
+        }
+        
+        .invoice h2 {
+            text-align: center;
+        }
+        
+        .invoice p {
+            margin-bottom: 10px;
+        }
+        
+        .invoice table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .invoice th, .invoice td {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+        
+        /* CSS cho khung chi tiết khách hàng */
+        .customer {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 500px;
+            margin: 20px auto;
+        }
+        
+        .customer h2 {
+            text-align: center;
+        }
+        
+        .customer p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice">
+        <h2>Chi tiết hoá đơn</h2>    
+        <div  *ngFor="let kh of kh">
+            <p>Tên khách hàng: {{kh.tenkh}}</p>
+            <p>Địa chỉ: {{kh.diachi}}</p>
+            <p>Số điện thoại: {{kh.sdt}}</p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Đơn giá</th>
+                    <th>Hình ảnh</th>
+                    <th>Số lượng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of Cthd">
+                    <td>{{c.tentruyen}}</td>
+                    <td>{{c.gia}}</td>
+                    <td><img style="width: 44px; height: 44px;" src="assets/img/{{c.hinhanh}}" alt=""></td>
+                    <td>{{c.soluong}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="mt-3"> 
+            <button class="btn btn-primary" (click)="printHtml()">IN hoá đơn</button>
+        </div>
+    </div>
+
+   
+</body>
+</html>
+
+
+
+
+
+<!-- <div class="container">
+    <button routerLink="/hoadon" style="width: 40px; height: 40px; border-radius: 50%; 
+              margin-right: 20px; background-color: white;" >
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+              </button> -->
+            
+<!-- <table class="table">
+    <thead>
+        <th>stt</th>
+        <th>Mã chi tiết</th>
+        <th>tên truyện</th>
+        <th>Tên khách hàng </th>
+        <th>sdt </th>
+        <th>Địa chỉ </th>
+        <th>Gia </th>
+        <th>hình ảnh </th>
+        <th>số lượng</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of Cthd;let i = index">
+            <td>{{i+1}}</td>
+            <td>{{c.mahd}}</td>
+            <td>{{c.tentruyen}}</td>
+            <td>{{c.tenkh}}</td>
+            <td>{{c.sdt}}</td>
+            <td>{{c.diachi}}</td>
+            <td>{{c.gia}}</td>
+            <td><img style="width: 44px; height: 44px;" src="assets/img/{{c.hinhanh}}" alt=""></td>
+            <td>{{c.soluong}}</td>
+        </tr>
+    </tbody>
+</table>
+</div> -->

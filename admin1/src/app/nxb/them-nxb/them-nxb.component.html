@@ -1,0 +1,45 @@
+
+<div class="container">
+    <button routerLink="/nxb" style="width: 40px; height: 40px; border-radius: 50%; 
+              margin-right: 20px; background-color: white;" >
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+              </button>
+<h2>Thêm nhà xuất bản </h2>
+<form action="" method="POST" [formGroup]="themnxb" (submit)="onsubmit()">
+
+    <div class="form-group">
+        <label for="">Tên Nxb</label>
+        <input type="text" class="form-control" formControlName="tennxb" placeholder="Tên Nhà xuất bản">
+        <div *ngIf="submited && f.tennxb.errors">
+             <small *ngIf="f.tennxb.errors?.['required']">Tên nhà xuất bản không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">địa chỉ</label>
+        <input type="text" class="form-control" formControlName="diachi" placeholder="Địa chỉ">
+        <div *ngIf="submited && f.diachi.errors">
+             <small *ngIf="f.diachi.errors?.['required']">Đia chỉ không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">email</label>
+        <input type="text" class="form-control" formControlName="email" placeholder="email">
+        <div *ngIf="submited && f.email.errors">
+             <small *ngIf="f.email.errors?.['required']">Hình ảnh không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">số điện thoại</label>
+        <input type="text" class="form-control" formControlName="sdt" placeholder="Số điện thoại">
+        <div *ngIf="submited && f.sdt.errors">
+             <small *ngIf="f.sdt.errors?.['required']">Số điện thoại không được để trống</small> 
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">đăng</button>
+</form>
+
+</div>

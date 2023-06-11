@@ -1,0 +1,49 @@
+<section id="center" class="center_o pt-3 pb-3 bg_light1">
+    <div class="container-xl">
+     <div class="row center_h1">
+       <div class="col-md-12">
+        <ul class="mb-0">
+         <li class="d-inline-block font_13 col_light me-2"><a class="pe-1" href="#">Trang chủ</a> |</li> 
+         <li class="d-inline-block col_oran font_13" style="margin-right: 30px;">Đơn hàng của tôi</li>
+         <li class="d-inline-block col_oran font_13"><Button class="btn btn-sm btn-primary" routerLink="/donhang/donhang1/{{user.makh}}">Đơn hàng đã mua</Button></li>
+        </ul>
+       </div>
+     </div>
+     
+    </div>
+   </section>
+   
+<div class="container"*ngFor="let d of Dh|paginate: { itemsPerPage: 6, currentPage: p },let i = index">
+    <table class="table table-bordered" *ngIf="d.tinhtrang==1|| d.tinhtrang==2">
+        <thead style="background-color: #8696FE;">
+            <tr>
+                <th>Mã đơn</th>
+                <th>tên khách hàng</th>
+                <th>Giá</th>
+                <th>tình trạng</th>
+                <th style="display: none;">Mã hoá đơn</th>
+                <th>Tuỳ chọn</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr >
+                <td>{{d.madon}}</td>
+                <td>{{d.tenkh}}</td>
+                <td>{{d.gia|number:''}}đ</td>
+                <td *ngIf="d.tinhtrang==1">Đang chờ xử lí</td>
+                <td *ngIf="d.tinhtrang==2">Đang giao </td>
+                <td *ngIf="d.tinhtrang==3">Đã nhận</td>
+                <td *ngIf="d.tinhtrang==4">Đã huỷ</td>
+                <td style="display: none;">{{d.mahd}}</td>
+                <td>
+                    <a routerLink="/chitiethd/{{d.mahd}}" class="btn btn-sm btn-primary" >Xem</a>
+                    <a routerLink="/donhang/suadh/{{d.madon}}" class="btn btn-sm btn-danger"   *ngIf="d.tinhtrang ==2">cập nhật</a>                
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div style="margin-left: 30%;">
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+   

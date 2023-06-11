@@ -1,0 +1,46 @@
+<section id="center" class="center_o pt-3 pb-3 bg_light1">
+    <div class="container-xl">
+     <div class="row center_h1">
+       <div class="col-md-12">
+        <ul class="mb-0">
+         <li class="d-inline-block font_13 col_light me-2"><a class="pe-1" href="#">Trang chủ</a> |</li> 
+         <li class="d-inline-block col_oran font_13">Đơn hàng đã mua</li>
+        </ul>
+       </div>
+     </div>
+     
+    </div>
+   </section>
+<div class="container"*ngFor="let d of Dh|paginate: { itemsPerPage: 6, currentPage: p },let i = index">
+    <table class="table table" *ngIf="d.tinhtrang==3">
+        <thead style="background-color: #8696FE;">
+            <tr>
+                <th>Stt</th>
+                <th>tình trạng</th>
+                <th>tên khách hàng</th>
+                <th>Giá</th>
+                <th style="display: none;">Mã hoá đơn</th>
+                <th>Mã đơn</th>
+                <th>Tuỳ chọn</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr >
+                <td>{{i+1}}</td>
+                <td *ngIf="d.tinhtrang==3">Đã nhận</td>
+                <td>{{d.tenkh}}</td>
+                <td>{{d.gia|number:''}}đ</td>
+                <td style="display: none;">{{d.mahd}}</td>
+                <td>{{d.madon}}</td>
+                <td>
+                    <a routerLink="/chitiethd/{{d.mahd}}" class="btn btn-sm btn-primary" >Xem</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div style="margin-left: 40%;">
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+</div>
+   

@@ -1,0 +1,35 @@
+
+<div class="container">
+    <form action="" method="POST" class="form-inline mt-2 mb-2">
+        <button routerLink="/admin" style="width: 40px; height: 40px; border-radius: 50%; 
+                  margin-right: 20px; background-color: white;" >
+                  <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                  </button>
+        <a routerLink="/quyen/them" class="btn btn-success" >Thêm mới</a>
+    </form>
+    <input type="text" style="text-align: center; border: 1px solid; height:  45px; margin-left: 40%;" [(ngModel)]="term" placeholder="tìm kiếm gì đó">
+    <table class="table table-bordered ">
+        <thead style="background-color: #8696FE;">
+            <tr>
+                <th>STT</th>
+                <th>ID </th>
+                <th>Tên</th>
+                <th>Tùy Chọn</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let q of QUyen|filter:term  
+            |paginate: { itemsPerPage: 4, currentPage: p };let i = index">
+                <td>{{i+1}}</td>
+                <td>{{q.maquyen}}</td>
+                <td>{{q.tenquyen}}</td>
+                <td>
+                    <a routerLink="/quyen/sua/{{q.maquyen}}" class="btn btn-sm btn-primary" >Edit</a>
+                    <a href="javascript:void(0)" class="btn btn-sm btn-danger" (click)="onDelete(q.maquyen)">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    
+</div>

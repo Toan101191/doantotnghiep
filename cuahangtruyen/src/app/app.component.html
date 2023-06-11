@@ -1,0 +1,173 @@
+
+
+<section id="header_top">
+  <div class="container-xl">
+    <div class="row header_top1">
+      <div class="col-md-3">
+        <div class="header_top1l">
+          <h3 class="mb-0"><a class="col_dark" href="index.html"><i
+                class="fa fa-shopping-cart col_oran fs-1 me-1 align-middle"></i> Truyện cũ</a></h3>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="header_top1m">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Tìm kiếm gì đó">
+            <span class="input-group-btn">
+              <button class="btn btn-primary bg_oran" type="button">
+                Tìm  kiếm </button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="header_top1r pull-right">
+          <ul class="mb-0">
+            <li class="nav-item dropdown d-table-cell"  routerLink="/giohang">
+              <a class="dropdown-toggle lang_tab font_12 col_dark" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-shopping-basket me-1 fs-2 align-middle me-1 col_oran"></i> Giỏ hàng
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- <div class="col-md-2" *ngIf="user.tenkh">
+        <div class="header_top1r pull-right">
+          <span ><b>Xin chào: {{user.tenkh}}</b></span>
+          <button style="margin-left: 10px;" class="dropdown-toggle lang_tab font_12 col_dark" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false" (click)="clearcart()" (click)="logout()">
+            <i class="fa fa-sign-in"></i>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-2" *ngIf="!user.tenkh">
+        <div class="header_top1r pull-right">
+          <button routerLink="/login" class="dropdown-toggle lang_tab font_12 col_dark" id="navbarDropdown"
+            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-user"></i>
+          </button>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+<section id="header" class="bg_dark">
+  <nav class="navbar navbar-expand-md navbar-light pt-0 pb-0" id="navbar_sticky">
+    <div class="container-xl">
+      <a class="navbar-brand text-white" href="index.html"><i
+          class="fa fa-shopping-cart col_oran fs-1 me-1 align-middle"></i> Truyện cũ</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mb-0" >
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle act_cat nav_hide" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fa fa-navicon me-1"></i> Danh mục
+            </a>
+            <ul class="dropdown-menu drop_cat" aria-labelledby="navbarDropdown">
+              <li *ngFor="let l of Loai"><a class="dropdown-item" href="/lsp/{{l.matl}}"><i class="fa fa-laptop me-2 col_oran"></i>{{l.tentl}}</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/">Trang chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="about">Về chúng tôi </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" routerLink="sp" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Sản phẩm
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" routerLink="tt" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Tin tức
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"routerLink="lienhe">Liên hệ</a>
+          </li>
+          <!-- <li class="nav-item" *ngIf="user.maquyen==1 || user.maquyen==3">
+            <a class="nav-link" href="http://localhost:4200/">Quản trị</a>
+          </li> -->
+          <li class="nav-item" *ngIf="user.tenkh">
+            <a class="nav-link" routerLink="donhang/{{user.makh}}">Đơn hàng</a>
+          </li>
+          <li class="nav-item dropdown" *ngIf="user.tenkh">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img style="width: 22px; height: 22px; border-radius: 50%;" src="assets/img/fb.jpg">
+            </a>
+            <ul class="dropdown-menu drop_2 drop_cat" aria-labelledby="navbarDropdown">
+              <li><button class="dropdown-item"  routerLink="/giohang"><i  class="fa fa-shopping-basket me-1 fs-2 align-middle me-1 col_oran"></i> Giỏ hàng của tôi</button></li>
+              <li *ngIf="user.maquyen==1 || user.maquyen==3"><button class="dropdown-item border-0" ><i class="fa fa-user"></i> Trang quản trị</button></li>
+              <li><button class="dropdown-item border-0" (click)="clearcart()" (click)="logout()"><i class="fa fa-sign-in"></i> Đăng xuất</button></li>
+            </ul>
+          </li>
+          <li class="nav-item" *ngIf="!user.tenkh">
+            <a class="nav-link" routerLink="login"><i class="fa fa-user"></i> Đăng nhập</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</section>
+<router-outlet></router-outlet>
+ <section id="footer_middle" class="bg_lightb">
+  <div class="container-xl">
+    <div class="footer_middle1 row">
+     <div class="col-md-4">
+      <div class="footer_middle1i bg_1 ps-4 pe-4">
+     <h5 class="mb-3">Liên hệ</h5>
+     <div class="footer_middle1ii row">
+      <div class="col-md-2 pe-0 col-2">
+       <div class="footer_middle1iil">
+      <span class="bg_dark d-inline-block rounded-circle text-center text-white"><i class="fa fa-map-marker"></i></span>
+     </div>
+      </div>
+      <div class="col-md-10 ps-0 col-10">
+       <div class="footer_middle1iir">
+      <p class="mb-0"><span class="fw-bold">Địa chỉ:</span> Đội 5, Vĩnh Khúc,Văn Giang, Hưng Yên</p>
+     </div>
+      </div>
+     </div>
+     <div class="footer_middle1ii row mt-3">
+      <div class="col-md-2 pe-0 col-2">
+       <div class="footer_middle1iil">
+      <span class="bg_dark d-inline-block rounded-circle text-center text-white"><i class="fa fa-envelope"></i></span>
+     </div>
+      </div>
+      <div class="col-md-10 ps-0 col-10">
+       <div class="footer_middle1iir">
+      <p class="mb-0 mt-2"><span class="fw-bold">Email:</span> <a href="#">nhunaoker1@gmail.com</a></p>
+     </div>
+      </div>
+     </div>
+     <div class="footer_middle1ii row mt-3">
+      <div class="col-md-2 pe-0 col-2">
+       <div class="footer_middle1iil">
+      <span class="bg_dark d-inline-block rounded-circle text-center text-white"><i class="fa fa-phone"></i></span>
+     </div>
+      </div>
+      <div class="col-md-10 ps-0 col-10">
+       <div class="footer_middle1iir">
+      <p class="mb-0 mt-2"><span class="fw-bold">Điện thoại:</span> +8435 696 4919</p>
+     </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="col-md-8" style="background-color: #eceef4">
+     <img src="assets/img/banner4.gif" alt="">
+   </div>
+
+    </div>
+  </div>
+ </section>

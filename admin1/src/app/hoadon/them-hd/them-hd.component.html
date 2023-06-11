@@ -1,0 +1,42 @@
+<button routerLink="/hoadon" style="width: 40px; height: 40px; border-radius: 50%; 
+              margin-right: 20px; background-color: white;" >
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+              </button>
+<h2>Thêm hoá đơn</h2>
+
+<form action=""  [formGroup]="themhd" (submit)="post(themhd.value)">
+
+    <div class="form-group">
+        <label for="">khách hàng</label>
+        <input type="text" class="form-control" formControlName="makh">
+        <div *ngIf="submited && f.makh.errors">
+             <small *ngIf="f.makh.errors?.['required']">kh không được để trống</small> 
+
+        </div>
+    </div>   
+    <div class="form-group">
+        <label for="">giá</label>
+        <input type="text" class="form-control" formControlName="gia" >
+        <div *ngIf="submited && f.gia.errors">
+             <small *ngIf="f.gia.errors?.['required']">Ngày không được để trống</small> 
+
+        </div>
+    </div> 
+     <div class="form-group">
+        <label for="">sản phẩm</label>
+        <input type="text" class="form-control" formControlName="matruyen" >
+        <div *ngIf="submited && f.matruyen.errors">
+             <small *ngIf="f.matruyen.errors?.['required']">Ngày không được để trống</small> 
+
+        </div>
+    </div> 
+    <div class="form-group">
+        <label for="">Số lượng</label>
+        <input type="text" class="form-control" formControlName="soluong" >
+        <div *ngIf="submited && f.soluong.errors">
+             <small *ngIf="f.soluong.errors?.['required']">Giá không được để trống</small> 
+
+        </div>
+    </div>  
+    <button type="submit" class="btn btn-primary">đăng</button>
+</form>

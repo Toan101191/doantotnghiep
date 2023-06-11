@@ -1,0 +1,41 @@
+<div id="wrapper">
+    <form #loginForm="ngForm" id="form-login" method="POST" [formGroup]="themkh" (submit)="onsubmit()">
+        <img style="height: 100px; width: 250px; margin-left: 45px;" src="assets/img/logo.jpg" alt="logo" />
+        <div class="form-group">
+            <input type="text" class="form-input" formControlName="tenkh" placeholder="Tên khách hàng" required>
+            <div *ngIf="submited && f.tenkh.errors">
+                <small style="color: white;" *ngIf="f.tenkh.errors?.['required']">Tên không được để trống</small> 
+   
+           </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-input" formControlName="sdt" placeholder="Số điện thoại" required>
+            <div *ngIf="submited && f.sdt.errors">
+                <small style="color: white;" *ngIf="f.sdt.errors?.['required']">Số điện thoại không được để trống</small> 
+   
+           </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-input" formControlName="diachi" placeholder="Địa chỉ" required>
+            <div *ngIf="submited && f.diachi.errors">
+                <small style="color: white;" *ngIf="f.diachi.errors?.['required']">Địa chỉ không được để trống</small> 
+   
+           </div>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-input" formControlName="tk" placeholder="Tên đăng nhập" required>
+            <div *ngIf="submited && f.tk.errors">
+                <small style="color: white;" *ngIf="f.tk.errors?.['required']">Tên đăng nhập không được để trống</small> 
+   
+           </div>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-input" formControlName="mk" placeholder="Mật khẩu" required>
+            <div *ngIf="submited && f.mk.errors">
+                <small style="color: white;" *ngIf="f.mk.errors?.['required']">Mật khẩu không được để trống</small> 
+   
+           </div>
+        </div>
+        <input type="submit"  value="Đăng nhập" class="form-submit">
+    </form>
+</div>

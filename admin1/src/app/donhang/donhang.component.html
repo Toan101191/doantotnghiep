@@ -1,0 +1,36 @@
+
+<div class="container">
+    <button routerLink="/admin" style="width: 40px; height: 40px; border-radius: 50%; 
+              margin-right: 20px; background-color: white;" >
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+              </button>
+              <input type="text" style="text-align: center; border: 1px solid; height:  45px; margin-left: 40%;" [(ngModel)]="term" placeholder="tìm kiếm gì đó">
+<table class="table table-bordered" >
+    <thead style="background-color: #8696FE;">
+        <tr>
+            <th>Stt</th>
+            <th>tình trạng</th>
+            <th>tên khách hàng</th>
+            <th>Giá</th>
+            <th>Mã đơn</th>
+            <th>Tuỳ chọn</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let d of Dh|filter:term  
+        |paginate: { itemsPerPage: 4, currentPage: p },let i = index">
+            <td>{{i+1}}</td>
+            <td *ngIf="d.tinhtrang==1">Đang chờ xử lí </td>
+            <td *ngIf="d.tinhtrang==2">đang giao </td>
+            <td *ngIf="d.tinhtrang==3">Đã nhận</td>
+            <td *ngIf="d.tinhtrang==4">Đã huỷ</td>
+            <td>{{d.tenkh}}</td>
+            <td>{{d.gia}}</td>
+            <td>{{d.madon}}</td>
+            <td><a routerLink="/donhang/sua/{{d.madon}}" class="btn btn-sm btn-primary" *ngIf="d.tinhtrang==1 || d.tinhtrang==2">Edit</a></td>
+        </tr>
+    </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+</div>

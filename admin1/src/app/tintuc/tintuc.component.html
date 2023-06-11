@@ -1,0 +1,47 @@
+
+<div class="container">
+    
+<form action="" method="POST" class="form-inline mt-2 mb-2">
+    <button routerLink="/admin" style="width: 40px; height: 40px; border-radius: 50%; 
+              margin-right: 20px; background-color: white;" >
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+              </button>
+    <a routerLink="/tintuc/them" class="btn btn-success" >Thêm mới</a>
+</form>
+<input type="text" style="text-align: center; border: 1px solid; height:  45px; margin-left: 40%;" [(ngModel)]="term" placeholder="tìm kiếm gì đó">
+
+
+<table class="table table-bordered ">
+    <thead style="background-color: #8696FE;">
+        <tr>
+            <th>STT</th>
+            <th>ID tin</th>
+            <th>Tiêu đề</th>
+            <th>Nội dung</th>
+            <th>Hình ảnh</th>
+            <th>loại tin</th>
+            <th>ngày thêm</th>
+            <th>Tùy Chọn</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tin of Tin|filter:term  
+        |paginate: { itemsPerPage: 4, currentPage: p };let i = index">
+            <td>{{i+1}}</td>
+            <td>{{tin.matin}}</td>
+            <td style="width: 200px;" >{{tin.tieude}}</td>
+            <td style="max-width: 300px;"  [innerHTML]="tin.nd">{{tin.nd}}</td>
+            <td><img width="150px" height="100px" src="assets/img/{{tin.hinhanh}}"></td>
+            <td *ngIf="tin.loaitin==1" >Tin hot</td>
+            <td *ngIf="tin.loaitin==2" >Tin thường</td>
+            <td  >{{tin.ngay}}</td>
+            <td>
+                <a routerLink="/tintuc/sua/{{tin.matin}}" class="btn btn-sm btn-primary" >Edit</a>
+                <a href="javascript:void(0)" class="btn btn-sm btn-danger" (click)="onDelete(tin.matin)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+

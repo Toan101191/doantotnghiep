@@ -1,0 +1,42 @@
+
+<div class="container">
+    <form action="" method="POST" class="form-inline mt-2 mb-2">
+        <button routerLink="/admin" style="width: 40px; height: 40px; border-radius: 50%; 
+                  margin-right: 20px; background-color: white;" >
+                  <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+                  </button>
+        <a routerLink="/nhanvien/them" class="btn btn-success" >Thêm mới</a>
+    </form>
+    <input type="text" style="text-align: center; border: 1px solid; height:  45px; margin-left: 40%;" [(ngModel)]="term" placeholder="tìm kiếm gì đó">
+    <table class="table table-bordered ">
+        <thead style="background-color: #8696FE;">
+            <tr>
+                <th>STT</th>
+                <th>ID Nhân viên</th>
+                <th>Tên</th>
+                <th>sdt</th>
+                <th>địa chỉ</th>
+                <th>Hình ảnh</th>
+                <th>Tùy Chọn</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let n of Nv |filter:term  
+            |paginate: { itemsPerPage: 4, currentPage: p } ;let i = index">
+                <td>{{i+1}}</td>
+                <td>{{n.manv}}</td>
+                <td>{{n.tennv}}</td>
+                <td>{{n.sdt}}</td>
+                <td>{{n.diachi}}</td>
+                <td><img width="150px" height="100px" src="assets/img/{{n.hinhanh}}"></td>
+        
+                <td>
+                    <a routerLink="/nhanvien/sua/{{n.manv}}" class="btn btn-sm btn-primary" >Edit</a>
+                    <a href="javascript:void(0)" class="btn btn-sm btn-danger" (click)="onDelete(n.manv)">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    
+</div>

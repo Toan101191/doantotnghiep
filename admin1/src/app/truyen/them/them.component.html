@@ -1,0 +1,86 @@
+
+<div class="container">
+    <button routerLink="/truyen" style="width: 40px; height: 40px; border-radius: 50%; 
+              margin-right: 20px; background-color: white;" >
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+              </button>
+<form action="" method="POST" [formGroup]="themtruyen" (submit)="onsubmit()">
+    <div class="form-group">
+        <label for="">Tên Truyện</label>
+        <input type="text" class="form-control" formControlName="tentruyen" placeholder="Tên Truyện">
+        <div *ngIf="submited && f.tentruyen.errors">
+             <small *ngIf="f.tentruyen.errors?.['required']">Tên truyện không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Ảnh Truyện</label>
+        <input type="text" class="form-control" formControlName="hinhanh" placeholder="Ảnh Truyện">
+        <div *ngIf="submited && f.hinhanh.errors">
+             <small *ngIf="f.hinhanh.errors?.['required']">Hình Ảnh không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Thể loại</label>
+       <select  formControlName="matl" id="input" class="form-control" >
+        <option value="">Chọn một</option>
+        <option *ngFor="let loai of loais" value="{{loai.matl}}">{{loai.tentl}}</option>
+       </select>
+        <div *ngIf="submited && f.matl.errors">
+             <small *ngIf="f.matl.errors?.['required']">Loại không được để trống</small> 
+
+        </div>
+    </div>
+     <div class="form-group">
+        <label for="">Tác giả</label>
+        <select  formControlName="matg" id="input" class="form-control" >
+            <option value="">Chọn một</option>
+            <option *ngFor="let tgia of Tgia" value="{{tgia.matg}}">{{tgia.tentg}}</option>
+           </select>
+        <div *ngIf="submited && f.matg.errors">
+             <small *ngIf="f.matg.errors?.['required']">Tác giả không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Nhà xuất bản</label>
+        <select  formControlName="manxb" id="input" class="form-control" >
+            <option value="">Chọn một</option>
+            <option *ngFor="let n of Nxb" value="{{n.manxb}}">{{n.tennxb}}</option>
+           </select>
+        <div *ngIf="submited && f.manxb.errors">
+             <small *ngIf="f.manxb.errors?.['required']">Nhà xuất bản không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Giá</label>
+        <input type="text" class="form-control" formControlName="gia" placeholder="Giá">
+        <div *ngIf="submited && f.gia.errors">
+             <small *ngIf="f.gia.errors?.['required']">Giá không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Số lượng</label>
+        <input type="text" class="form-control" formControlName="soluong" placeholder="Số lượng còn">
+        <div *ngIf="submited && f.soluong.errors">
+             <small *ngIf="f.soluong.errors?.['required']">Số lượng không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Mô tả</label>
+        <ckeditor  formControlName="mota" placeholder="Mô tả"></ckeditor>
+        <div *ngIf="submited && f.mota.errors">
+             <small *ngIf="f.mota.errors?.['required']">Mô tả không được để trống</small> 
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">đăng</button>
+
+</form>
+
+
+</div>

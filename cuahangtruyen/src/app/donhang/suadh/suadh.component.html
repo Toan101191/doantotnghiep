@@ -1,0 +1,54 @@
+<form action="" method="POST" [formGroup]="suadh" (submit)="onsubmit()">
+<div class="container">
+    <table class="table table" style="display: none;">
+        <thead>
+            <tr>
+                <th>tình trạng</th>
+                <th>mã khách hàng</th>
+                <th>mã chi tiết</th>
+                <th>mã đơn</th>
+                <th>mã hoá đơn</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr >
+                <td>
+                    <select  formControlName="tinhtrang" id="input" class="form-control">
+                        <option  >1</option>
+                        <option >2</option>
+                    </select>
+                </td>
+                <td><input type="text" formControlName="makh"></td>
+                <td><input type="text" formControlName="mact"></td>
+                <td ><input type="text" formControlName="madon"></td>
+                <td><input type="text" formControlName="mahd"></td>
+                <td>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table" style="width: 200px;">
+        <thead>
+            <tr>
+                <th>tình trạng</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr >
+                <td>
+                    <select  formControlName="tinhtrang" id="input" class="form-control">
+                        <option [value]="2" >Đang giao</option>
+                        <option [value]="3">Đã nhận</option>
+                    </select>
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</form>

@@ -1,0 +1,45 @@
+
+<div class="container">
+    <button routerLink="/nhanvien" style="width: 40px; height: 40px; border-radius: 50%; 
+              margin-right: 20px; background-color: white;" >
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+              </button>
+<h2>Sửa nhân viên</h2>
+<form action="" method="POST" [formGroup]="themnv" (submit)="onsubmit()">
+
+    <div class="form-group">
+        <label for="">Tên Nhân viên</label>
+        <input type="text" class="form-control" formControlName="tennv" placeholder="Tên Nhân viên">
+        <div *ngIf="submited && f.tennv.errors">
+             <small *ngIf="f.tennv.errors?.['required']">Tên nhân viên không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">só diện thoại</label>
+        <input type="text" class="form-control" formControlName="sdt" placeholder="số diện thoại">
+        <div *ngIf="submited && f.sdt.errors">
+             <small *ngIf="f.sdt.errors?.['required']">Số điện thoại không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Địa chỉ</label>
+        <input type="text" class="form-control" formControlName="diachi" placeholder="Địa chỉ">
+        <div *ngIf="submited && f.diachi.errors">
+             <small *ngIf="f.diachi.errors?.['required']">Địa chỉ không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Ảnh Nhân viên</label>
+        <input type="text" class="form-control" formControlName="hinhanh" placeholder="Ảnh nhân viên">
+        <div *ngIf="submited && f.hinhanh.errors">
+             <small *ngIf="f.hinhanh.errors?.['required']">Hình ảnh không được để trống</small> 
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">đăng</button>
+</form>
+
+</div>

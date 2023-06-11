@@ -1,0 +1,92 @@
+<section id="center" class="center_o pt-3 pb-3 bg_light1">
+    <div class="container-xl">
+     <div class="row center_h1">
+       <div class="col-md-12">
+        <ul class="mb-0">
+         <li class="d-inline-block font_13 col_light me-2"><a class="pe-1" href="#">Trang chủ</a> |</li> 
+         <li class="d-inline-block col_oran font_13">Sản phẩm</li>
+        </ul>
+       </div>
+     </div>
+     
+    </div>
+   </section>
+   
+<section id="prod_pg" class="pt-4 pb-4">
+    <div class="container-xl">
+        <div class="row prod_pg1">
+            <div class="col-md-9">
+                <div class="prod_pg1r">
+                    <div class="prod_pg1r1 row">
+                        <div class="col-md-12">
+                            <h5 class="text-uppercase"> Tất cả truyện</h5>
+                            <hr class="line">
+                        </div>
+                    </div>
+                    
+                    <div class="prod_pg1r2 m-0  row">
+                        
+                        <div class="col-md-4 col-sm-6">
+                            <input style="height: 40px;" type="text" [(ngModel)]="term" placeholder="Tìm kiếm đơn giản">
+
+                        </div>
+                        <div class="col-md-8 col-sm-6">
+                            <div class="prod_pg1r2r pull-right">
+                                <h6 class="mb-0 d-inline-block float-start me-2 mt-2 font_13 col_light">Lọc theo:</h6>
+                                <select [(ngModel)]="term" name="categories" class="form-select" required="">
+                                    <option value=""></option>
+                                    <option  *ngFor="let loai of Loai" value="{{loai.tentl}}">{{loai.tentl}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prod_pg1r3 mt-4  row">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="home">
+                                <div class="prod_h2m row" >
+                                    <div style="margin-top: 20px;" class="col-md-4" *ngFor="let t of Truyen|filter:term|paginate: { itemsPerPage: 6, currentPage: p }">
+                                        <div class="prod_h2i1 clearfix position-relative" >
+                                            <div class="prod_h2i1i text-center clearfix">
+                                                <div class="grid clearfix">
+                                                    <figure class="effect-jazz mb-0">
+                                                        <a routerLink="/chitiet/{{t.matruyen}}"><img height="350px" src="assets/img/{{t.hinhanh}}" class="w-100"
+                                                                alt="abc"></a>
+                                                    </figure>
+                                                </div>
+
+                                                <h6 class="text-capitalize mt-3"><a routerLink="/chitiet/{{t.matruyen}}">{{t.tentruyen}}
+                                                        </a></h6>
+                                                <span class="col_yell">
+                                                 {{t.tentl}}
+                                                </span>
+                                                <h5 class="mt-2 col_oran">{{t.gia|number:''}}đ</h5>
+                                                <div *ngIf="!user.tenkh">
+                                                    <h6 class="mb-0 mt-3 pb-3" *ngIf="t.soluong >= 1" ><button  (click)="login1()" class="button_1 p-3 pt-2 pb-2"><i
+                                                        class="fa fa-shopping-basket"></i> Thêm vào giỏ hàng</button></h6>
+                                                        <h6 class="mb-0 mt-3 pb-3" *ngIf="t.soluong == 0 "><button [disabled]="true" class="button_1 p-3 pt-2 pb-2"><i
+                                                            class="fa fa-shopping-basket"></i> Hết hàng</button></h6>
+                                                </div>
+                                               <div *ngIf="user.tenkh">
+                                                <h6 class="mb-0 mt-3 pb-3" *ngIf="t.soluong>=1"><button  (click)="onAddTocard(t)" class="button_1 p-3 pt-2 pb-2"><i
+                                                    class="fa fa-shopping-basket"></i> Thêm vào giỏ hàng</button></h6>
+                                                <h6 class="mb-0 mt-3 pb-3" *ngIf="t.soluong==0 "><button [disabled]="true"  (click)="onAddTocard(t)" class="button_1 p-3 pt-2 pb-2"><i
+                                                    class="fa fa-shopping-basket"></i> Hết hàng</button></h6>
+                                               </div>
+                                            </div>
+                                            <div class="prod_h2i1i2 position-absolute clearfix">
+                                                <span class="d-inline-block bg-white fs-5"><i
+                                                        class="fa fa-heart-o"></i></span>
+                                            </div>
+                                            <div class="prod_h2i1i3 clearfix position-absolute w-100 text-center">
+                                                <span class="d-inline-block bg_oran fs-5"><a href="detail.html"><i
+                                                            class="fa fa-search text-white"></i></a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>

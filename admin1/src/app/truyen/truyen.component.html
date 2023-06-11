@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col-12 grid-margin">
+      <div class="card">
+        
+        <div class="card-body">
+            <form action="" method="POST" class="form-inline">
+              <button routerLink="/admin" style="width: 40px; height: 40px; border-radius: 50%; 
+              margin-right: 20px; background-color: white;" >
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+              </button>
+              <a routerLink="/truyen/them" class="btn btn-success" >Thêm mới</a>
+            </form>
+            <input type="text" style="text-align: center; border: 1px solid;width:300px ; height:  45px; margin-left: 40%;" [(ngModel)]="term" placeholder="tìm kiếm gì đó">
+
+          <div >
+            <table class="table table-bordered">
+              <thead style="background-color: #8696FE;">
+                <tr >
+                    <th >STT</th>
+                    <th>ID</th>
+                    <th>Tên Truyện</th>
+                    <th>Hình Ảnh</th>
+                    <th>Thể Loại</th>
+                    <th>Tác giả</th>
+                    <th>Nhà xuất bản</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tùy chọn</th>
+                </tr>
+              </thead>
+              <tbody>
+        
+                <tr *ngFor="let t of Truyen|filter:term|paginate: { itemsPerPage: 4, currentPage: p }; let i =index">
+                    <th>{{i+1}}</th>
+                    <th>{{t.matruyen}}</th>
+                    <th>{{t.tentruyen}}</th>
+                    <th><img width="100px" src="assets/img/{{t.hinhanh}}"></th>
+                    <th>{{t.tentl}}</th>
+                    <th>{{t.tentg}}</th>
+                    <th>{{t.tennxb}}</th>
+                    <th>{{t.gia}}</th>
+                    <th>{{t.soluong}}</th>
+                    <td>
+                        <a routerLink="/truyen/sua/{{t.matruyen}}"  class="btn btn-sm btn-primary mr-1">Edit</a>
+                        <a href="javascript:void(0)" class="btn btn-sm btn-danger" (click)="onDelete(t.matruyen)">Delete</a>
+                    </td>
+                </tr>
+        
+            </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

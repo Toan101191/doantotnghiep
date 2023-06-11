@@ -1,0 +1,57 @@
+
+<div class="container">
+    <button routerLink="/tintuc" style="width: 40px; height: 40px; border-radius: 50%; 
+              margin-right: 20px; background-color: white;" >
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+              </button>
+<h2>Thêm  tin tức</h2>
+<form action="" method="POST" [formGroup]="themtin" (submit)="onsubmit()">
+
+    <div class="form-group">
+        <label for="">Tiêu đề</label>
+        <input type="text" class="form-control" formControlName="tieude" placeholder="Tiêu đề">
+        <div *ngIf="submited && f.tieude.errors">
+             <small *ngIf="f.tieude.errors?.['required']">Tiêu đề không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Nội dung</label>
+        <ckeditor   formControlName="nd" placeholder="Nội dung"></ckeditor>
+        <div *ngIf="submited && f.nd.errors">
+             <small *ngIf="f.nd.errors?.['required']">Nội dung không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Ảnh Tin</label>
+        <input type="text" class="form-control" formControlName="hinhanh" placeholder="Ảnh">
+        <div *ngIf="submited && f.hinhanh.errors">
+             <small *ngIf="f.hinhanh.errors?.['required']">Hình ảnh không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">loại tin</label>
+       <select  formControlName="loaitin" id="input" class="form-control" >
+        <option value="">Chọn một</option>
+        <option  value="1">Tin hot</option>
+        <option  value="2">Tin thường</option>
+       </select>
+        <div *ngIf="submited && f.loaitin.errors">
+             <small *ngIf="f.loaitin.errors?.['required']">Loại không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Ngày thêm</label>
+        <input type="text" class="form-control" formControlName="ngay">
+        <div *ngIf="submited && f.ngay.errors">
+             <small *ngIf="f.ngay.errors?.['required']">ngày không được để trống</small> 
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">đăng</button>
+</form>
+
+</div>

@@ -1,0 +1,66 @@
+<section id="center" class="center_o pt-3 pb-3 bg_light1">
+    <div class="container-xl">
+     <div class="row center_h1">
+       <div class="col-md-12">
+        <ul class="mb-0">
+         <li class="d-inline-block font_13 col_light me-2"><a class="pe-1" routerLink="/">Trang chủ</a> |</li> 
+         <li class="d-inline-block col_oran font_13" routerLink="giohang">Giỏ hàng </li>
+        </ul>
+       </div>
+     </div>
+     
+    </div>
+   </section>
+   
+<section id="cart_page" class="cart pt-4 pb-4" *ngIf="carts.length">
+    <div class="container-xl">
+        <div class="cart_2 row">
+            <div class="col-md-6">
+                <h5>Sản phẩm của tôi</h5>
+            </div>
+        </div>
+        <div class="cart_3 row mt-3">
+            <div class="col-md-8">
+                <div class="cart_3l1 mt-3 row ms-0 me-0" *ngFor="let cart of carts;let i = index">
+                    <div class="col-md-3 ps-0 col-3">
+                        <div class="cart_3l1i">
+                            <span>{{i+1}}</span><a routerLink="/chitiet/{{cart.matruyen}}"><img src="assets/img/{{cart.hinhanh}}" alt="abc" class="w-100"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-9">
+                        <div class="cart_3l1i1">
+                            <h6 class="fw-bold"><a routerLink="/chitiet/{{cart.matruyen}}">{{cart.tentruyen}}</a>
+                            </h6>
+                            <Button  class="btn btn-sm btn-danger" (click)="removecart(i)">Xoá</Button>
+                            <h6 class="fw-normal font_12 mt-3">Giá :{{cart.gia|number:''}}đ</h6>
+                            <h5 class="col_oran mt-3">{{subTotal(cart)|number:''}}đ</h5>
+                        </div>
+                        <div class="cart_3l1i1">
+                            <h6 class="font_12 mt-3 mb-3">Số lượng</h6>
+                            <button (click)="giamsl(i,cart.soluong)">-</button>
+                            <input (change)="updateSl(i,$event)" type="number" [value]="cart.soluong" style="width: 80px; text-align: center;">
+                            <button (click)="tangsl(i,cart.soluong)">+</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-4" >
+                <div class="cart_3r">
+                    <h5 class="head_1">Tổng tiền</h5>
+                    <h5 class="text-center col_oran mt-3">{{totalPrice|number:''}}đ</h5>
+                    <hr>
+                    <h6 class="font_13">Ấn thanh toán để đặt hàng</h6>
+                    <h6 class="text-center mt-3"><a class="button" routerLink="/thanhtoan">Thanh Toán</a></h6><br>
+                    <input class="form-control" type="text">
+                    <h6 class="text-center mt-3"><button class="button" (click)="clearcart()"  href="#">Xoá toàn bộ giỏ hàng</button></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div style="text-align: center;" class="alert alert-danger" *ngIf="carts.length == 0">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>Giỏ hàng rỗng!</strong> <a routerLink="/">click vào đây</a> để tiếp tục mua hàng
+</div>
+   

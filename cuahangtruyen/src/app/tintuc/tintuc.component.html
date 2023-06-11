@@ -1,0 +1,62 @@
+<section id="center" class="center_o pt-3 pb-3 bg_light1">
+    <div class="container-xl">
+        <div class="row center_h1">
+            <div class="col-md-12">
+                <ul class="mb-0">
+                    <li class="d-inline-block font_13 col_light me-2"><a class="pe-1" routerLink="/">Trang chủ</a> |</li>
+                    <li class="d-inline-block col_oran font_13">Tin tức</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="blog" class="pt-4 pb-4">
+    <div class="container-xl">
+        <div class="row blog1">
+            <!-- <div class="col-md-4">
+                <div class="blog_1l">
+                    <div class="blog_1l1">
+                        <div class="input-group p-1">
+                            <input type="text" class="form-control border-0 font_13" placeholder="Search Here">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary bg-transparent border-0 fs-6" type="button">
+                                    <i class="fa fa-search col_oran"></i> </button>
+                            </span>
+                        </div>
+                    </div>
+        
+                </div>
+            </div> -->
+            <div class="col-md-8" *ngFor="let tt of Tt|paginate: { itemsPerPage: 3, currentPage: p }">
+                <div class="blog_1r">
+                    <div class="blog_1r1">
+                        <div class="grid clearfix">
+                            <figure class="effect-jazz mb-0">
+                                <a routerLink="/tt/tt/{{tt.matin}}"><img src="assets/img/{{tt.hinhanh}}" class="w-100" alt="img25"></a>
+                            </figure>
+                        </div>
+                        <ul class="mt-3">
+                            <li class="d-inline-block me-3 font_13"><a href="blog_detail.html"><i
+                                        class="fa fa-user col_oran me-1"></i> Admin</a></li>
+                            <li class="d-inline-block me-3 font_13"><a href="blog_detail.html"><i
+                                        class="fa fa-calendar col_oran me-1"></i> {{tt.ngay}}</a></li>
+                                        <li *ngIf="tt.loaitin==1" class="d-inline-block me-3 font_13"><i
+                                            class="fa fa-file col_oran me-1"></i>Tin hot</li>
+                                <li *ngIf="tt.loaitin==2" class="d-inline-block me-3 font_13"><i
+                                            class="fa fa-file col_oran me-1"></i>Tin thường</li>    
+                            <li class="d-inline-block font_13"><a href="blog_detail.html"><i
+                                        class="fa fa-comments col_oran me-1"></i> 0 Comment</a></li>
+                        </ul>
+                        <h5><a routerLink="/tt/tt/{{tt.matin}}">{{tt.tieude}}</a></h5>
+                        <p [innerHTML]="tt.nd">{{tt.nd}}</p>
+                        <h6><a class="button_1" href="blog_detail.html" routerLink="tt/{{tt.matin}}">Xem chi tiết</a></h6>
+                    </div>
+                </div>
+            </div>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,22 @@
+
+<div class="container">
+    <button routerLink="/slide" style="width: 40px; height: 40px; border-radius: 50%; 
+              margin-right: 20px; background-color: white;" >
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+              </button>
+<h2>Thêm slide</h2>
+
+<form action="" method="POST" [formGroup]="themslide" (submit)="onsubmit()">
+
+    <div class="form-group">
+        <label for="">Ảnh Slide</label>
+        <input type="text" class="form-control" formControlName="hinhanh" placeholder="Ảnh">
+        <div *ngIf="submited && f.hinhanh.errors">
+             <small *ngIf="f.hinhanh.errors?.['required']">Hình ảnh không được để trống</small> 
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">đăng</button>
+</form>
+
+</div>

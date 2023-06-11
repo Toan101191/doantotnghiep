@@ -1,0 +1,45 @@
+
+<div class="container">
+    <button routerLink="/tgia" style="width: 40px; height: 40px; border-radius: 50%; 
+              margin-right: 20px; background-color: white;" >
+              <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+              </button>
+<h2>Sửa tác giả</h2>
+<form action="" method="POST" [formGroup]="themtgia" (submit)="onsubmit()">
+
+    <div class="form-group">
+        <label for="">Tên Tác giả</label>
+        <input type="text" class="form-control" formControlName="tentg" placeholder="Tên Tác giả">
+        <div *ngIf="submited && f.tentg.errors">
+             <small *ngIf="f.tentg.errors?.['required']">Tên tác giả không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">địa chỉ</label>
+        <input type="text" class="form-control" formControlName="diachi" placeholder="Địa chỉ">
+        <div *ngIf="submited && f.diachi.errors">
+             <small *ngIf="f.diachi.errors?.['required']">Đia chỉ không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">Ảnh Tác giả</label>
+        <input type="text" class="form-control" formControlName="hinhanh" placeholder="Ảnh Tác giả">
+        <div *ngIf="submited && f.hinhanh.errors">
+             <small *ngIf="f.hinhanh.errors?.['required']">Hình ảnh không được để trống</small> 
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="">số điện thoại</label>
+        <input type="text" class="form-control" formControlName="sdt" placeholder="Số điện thoại">
+        <div *ngIf="submited && f.sdt.errors">
+             <small *ngIf="f.sdt.errors?.['required']">Số điện thoại không được để trống</small> 
+
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">đăng</button>
+</form>
+
+</div>
